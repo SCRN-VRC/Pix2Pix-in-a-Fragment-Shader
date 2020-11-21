@@ -73,11 +73,11 @@
                 uint2 px = _Buffer_TexelSize.zw * i.uv.xy;
                 float col = _Buffer.Load(uint3(px, 0)).x;
 
-                // 45 FPS
+                // 4ms per layer
                 float timer = LoadValue(_Buffer, txTimer);
-                timer += unity_DeltaTime;
+                timer += unity_DeltaTime.x;
 
-                if (timer < 0.0222)
+                if (timer < 0.004)
                 {
                     StoreValue(txTimer, timer, col, px);
                     return col;
@@ -1504,7 +1504,7 @@
 
                 lcFloor = min((lcFloor + 1), 58);
                 StoreValue(txLC, lcFloor, col, px);
-
+                StoreValue(txTimer, timer, col, px);
                 return col;
             }
             ENDCG
