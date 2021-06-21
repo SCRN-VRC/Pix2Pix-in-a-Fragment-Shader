@@ -41,7 +41,7 @@ src_image = load_image('input4.jpg')
 #src_image = test()
 print('Loaded', src_image.shape)
 # load model
-model = load_model('model_074400.h5')
+model = load_model('./tree/model_074400.h5')
 
 weights = model.get_weights()
 
